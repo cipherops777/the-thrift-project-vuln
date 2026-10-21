@@ -1,0 +1,25 @@
+{
+  "summary": {
+    "total_findings": 1,
+    "severity_counts": {
+      "critical": 0,
+      "high": 1,
+      "medium": 0,
+      "low": 0
+    }
+  },
+  "findings": [
+    {
+      "rule_id": "slack-token",
+      "rule_name": "Slack Token",
+      "file_path": "backend\\src\\controllers\\admin.controller.ts",
+      "line_number": 46,
+      "matched_snippet": "****-1234567890-abcdefghijklmnopqrst****",
+      "raw_secret_hash": "93a361922a30dc18bf6c5a3df88dfe4299ac3b512cd36d1c5c6d0bcc1345b1d4",
+      "confidence": 100,
+      "severity": "high",
+      "context_line": "SLACK_TOKEN = \"****-1234567890-abcdefghijklmnopqrst****\"",
+      "remediation": "Revoke this token in your Slack App settings and issue a new one via a secrets manager or environment variable."
+    }
+  ]
+}

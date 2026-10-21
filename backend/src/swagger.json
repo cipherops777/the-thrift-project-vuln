@@ -1,0 +1,598 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Tro Vest Capital",
+        "description": "Manage the Api",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "host": [
+        "localhost:5100/"
+    ],
+    "basePath": "",
+    "tags": [],
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "url": [
+        "http",
+        "https"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "File Upload": {},
+        "/api/file/uploadFile": {
+            "post": {
+                "summary": "File Upload",
+                "tags": [
+                    "File"
+                ],
+                "consumes": "application/json",
+                "produces": [
+                    "application/json"
+                ],
+                "security": [
+                    {
+                        "basicAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "formData",
+                        "name": "file",
+                        "type": "file"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/request/Metadata": {
+            "post": {
+                "tags": [
+                    "Blood Group"
+                ],
+                "required": [],
+                "properties": {
+                    "bloodgroup": {
+                        "type": "object",
+                        "uniqueItems": false
+                    }
+                }
+            }
+        },
+        "Admin": {},
+        "/api/v1/admin/create-admin": {
+            "post": {
+                "summary": "Create Admin",
+                "tags": [
+                    "Admin"
+                ],
+                "consumes": "application/json",
+                "produces": [
+                    "application/json"
+                ],
+                "security": [
+                    {
+                        "basicAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "body",
+                        "description": "create admin",
+                        "schema": {
+                            "$ref": "#/definitions/Admin"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/v1/admin/create-agent": {
+            "post": {
+                "summary": "Create Admin",
+                "tags": [
+                    "Admin"
+                ],
+                "consumes": "application/json",
+                "produces": [
+                    "application/json"
+                ],
+                "security": [
+                    {
+                        "basicAuth": []
+                    },
+                    {
+                       "bearerAuth": [] 
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "body",
+                        "description": "create admin",
+                        "schema": {
+                            "$ref": "#/definitions/Agent"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/v1/admin/login-admin": {
+            "post": {
+                "summary": "Login Admin",
+                "tags": [
+                    "Admin"
+                ],
+                "consumes": "multipart/form-data",
+                "security": [
+                    {
+                        "basicAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "Login",
+                        "in": "body",
+                        "description": "Login Admin",
+                        "schema": {
+                            "$ref": "#/definitions/login"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/v1/admin/get-admin": {
+            "get": {
+                "summary": "Get Admin",
+                "tags": [
+                    "Admin"
+                ],
+                "security": [
+                    {
+                        "basicAuth": []
+                    },
+                    {
+                       "bearerAuth": [] 
+                    }
+                ],
+                "consumes": "application/json",
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "Agent": {},
+        "/api/v1/agent/login-agent": {
+            "post": {
+                "summary": "Login Agent",
+                "tags": [
+                    "Agent"
+                ],
+                "consumes": "multipart/form-data",
+                "security": [
+                    {
+                        "basicAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "Login",
+                        "in": "body",
+                        "description": "Login Userl",
+                        "schema": {
+                            "$ref": "#/definitions/login"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/v1/agent/create-artisan": {
+            "post": {
+                "summary": "Create Artisan",
+                "tags": [
+                    "Agent"
+                ],
+                "consumes": "application/json",
+                "produces": [
+                    "application/json"
+                ],
+                "security": [
+                    {
+                        "basicAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "body",
+                        "description": "create user",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/v1/agent/get-artisan": {
+            "get": {
+                "summary": "Select Artisan",
+                "tags": [
+                    "Agent"
+                ],
+                "security": [
+                    {
+                        "basicAuth": []
+                    },
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "params",
+                        "required": true,
+                        "description": "Id of artisan",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/v1/agent/get-artisans": {
+            "get": {
+                "summary": "Select Artisan",
+                "tags": [
+                    "Agent"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Filter user"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Filter user"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/v1/agent/update-user": {
+            "put": {
+                "summary": "User Agent",
+                "tags": [
+                    "Agent"
+                ],
+                "consumes": "application/json",
+                "produces": [
+                    "application/json"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "user id"
+                    },
+                    {
+                        "name": "name",
+                        "in": "body",
+                        "description": "update user detail",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/v1/agent/forget-password": {
+            "put": {
+                "tags": [
+                    "Agent"
+                ],
+                "security": [
+                    {
+                        "basicAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "body",
+                        "description": "forget password",
+                        "schema": {
+                            "$ref": "#/definitions/updatepassword"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "basicAuth": {
+            "type": "basic",
+            "name": "authorization",
+            "in": "header"
+        },
+        "bearerAuth": {
+            "type": "apiKey",
+            "name": "token",
+            "in": "header"
+        }
+    },
+    "definitions": {
+        "Admin": {
+            "required": [
+                "first_name",
+                "last_name",
+                "username",
+                "image",
+                "mobile",
+                "email",
+                "password"
+            ],
+            "properties": {
+                "first_name": {
+                    "type": "string",
+                    "uniqueItems": false
+                },
+                "last_name": {
+                    "type": "string",
+                    "uniqueItems": false
+                },
+                "username": {
+                    "type": "string",
+                    "uniqueItems": false
+                },
+                "image": {
+                    "type": "string",
+                    "uniqueItems": false
+                },
+                "mobile": {
+                    "type": "string",
+                    "uniqueItems": false
+                },
+                "email": {
+                    "type": "string",
+                    "uniqueItems": false
+                },
+                "password": {
+                    "type": "string",
+                    "uniqueItems": false
+                }
+            }
+        },
+        "Agent": {
+            "required": [
+                "first_name",
+                "last_name",
+                "username",
+                "image",
+                "mobile",
+                "email",
+                "password",
+                "localgovt",
+                "state"
+            ],
+            "properties": {
+                "first_name": {
+                    "type": "string",
+                    "uniqueItems": false
+                },
+                "last_name": {
+                    "type": "string",
+                    "uniqueItems": false
+                },
+                "username": {
+                    "type": "string",
+                    "uniqueItems": false
+                },
+                "image": {
+                    "type": "string",
+                    "uniqueItems": false
+                },
+                "mobile": {
+                    "type": "string",
+                    "uniqueItems": false
+                },
+                "email": {
+                    "type": "number",
+                    "uniqueItems": false
+                },
+                "password": {
+                    "type": "string",
+                    "uniqueItems": false
+                },
+                "localgovt": {
+                    "type": "string",
+                    "uniqueItems": false
+                },
+                "state": {
+                    "type": "string",
+                    "uniqueItems": false
+                }
+            }
+        },
+        "Artisan": {
+            "required": [
+                "full_name",
+                "image",
+                "mobile",
+                "amount",
+                "state",
+                "localgovt"
+            ],
+            "properties": {
+                "full_name": {
+                    "type": "string",
+                    "uniqueItems": false
+                },
+                "image": {
+                    "type": "string",
+                    "uniqueItems": false
+                },
+                "mobile": {
+                    "type": "string",
+                    "uniqueItems": false
+                },
+                "amount": {
+                    "type": "number",
+                    "uniqueItems": false
+                },
+                "state": {
+                    "type": "string",
+                    "uniqueItems": false
+                },
+                "localgovt": {
+                    "type": "object",
+                    "uniqueItems": false
+                }
+            }
+        },
+        "Thrifts": {
+            "required": [
+                "artisan_id",
+                "amount"
+            ],
+            "properties": {
+                "artisan_id": {
+                    "type": "string",
+                    "uniqueItems": false
+                },
+                "amount": {
+                    "type": "string",
+                    "uniqueItems": false
+                }
+            }
+        },
+        "Collections": {
+            "required": [
+                "agent_id",
+                "total",
+                "artisan_id",
+                "payment_reference"
+            ],
+            "properties": {
+                "agent_id": {
+                    "type": "string",
+                    "uniqueItems": false
+                },
+                "total": {
+                    "type": "string",
+                    "uniqueItems": false
+                },
+                "artisan_id": {
+                    "type": "string",
+                    "uniqueItems": false
+                },
+                "payment_reference": {
+                    "type": "number",
+                    "uniqueItems": false
+                }
+            }
+        },
+        "updatepassword": {
+            "required": [
+                "email",
+                "password"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "uniqueItems": "false"
+                },
+                "password": {
+                    "type": "string",
+                    "uniqueItems": "false"
+                }
+            }
+        },
+        "login": {
+            "required": [
+                "email",
+                "password"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "uniqueItems": "false"
+                },
+                "password": {
+                    "type": "string",
+                    "uniqueItems": "false"
+                }
+            }
+        }
+    }
+}

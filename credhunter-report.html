@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>credhunter Report</title>
+<style>
+  body { font-family: -apple-system, Segoe UI, Arial, sans-serif; margin: 2rem; color: #1f2937; }
+  h1 { margin-bottom: 0.25rem; }
+  .toolbar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+  .btn { background: #10151c; color: #ffffff; border: 0; padding: 0.6rem 1.1rem; border-radius: 6px;
+          font-size: 0.9rem; font-weight: 600; cursor: pointer; }
+  .btn:hover { background: #1f2937; }
+  .muted { color: #6b7280; font-size: 0.85rem; }
+  .summary { display: flex; gap: 1rem; margin: 1.5rem 0; }
+  .summary-card { padding: 1rem 1.5rem; border-radius: 8px; color: white; min-width: 100px; text-align: center; }
+  table { border-collapse: collapse; width: 100%; margin-top: 1rem; }
+    th, td { text-align: left; padding: 0.6rem 0.8rem; border-bottom: 1px solid #e5e7eb; font-size: 0.9rem; }
+  th { background: #f9fafb; white-space: nowrap; }
+  .badge { display: inline-block; white-space: nowrap; padding: 0.2rem 0.6rem; border-radius: 999px; color: white; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; }
+  code { background: #f3f4f6; padding: 0.1rem 0.4rem; border-radius: 4px; overflow-wrap: anywhere; word-break: break-word; }
+</style>
+</head>
+<body>
+  <div class="toolbar">
+    <h1>credhunter Scan Report</h1>
+    <button class="btn" onclick="downloadPdf()">Download PDF</button>
+  </div>
+  <p>Total findings: <strong>1</strong></p>
+  <div class="summary">
+    <div class="summary-card" style="background:#b91c1c">
+  <div style="font-size:1.5rem;font-weight:700">0</div>
+  <div>Critical</div>
+</div>
+<div class="summary-card" style="background:#d97706">
+  <div style="font-size:1.5rem;font-weight:700">1</div>
+  <div>High</div>
+</div>
+<div class="summary-card" style="background:#ca8a04">
+  <div style="font-size:1.5rem;font-weight:700">0</div>
+  <div>Medium</div>
+</div>
+<div class="summary-card" style="background:#4b5563">
+  <div style="font-size:1.5rem;font-weight:700">0</div>
+  <div>Low</div>
+</div>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Severity</th><th>Confidence</th><th>Rule</th><th>File</th><th>Line</th><th>Snippet</th><th>Remediation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+  <td><span class="badge" style="background:#d97706">high</span></td>
+  <td>100%</td>
+  <td>Slack Token</td>
+  <td><code>backend\src\controllers\admin.controller.ts</code></td>
+  <td>46</td>
+  <td><code>****-1234567890-abcdefghijklmnopqrst****</code></td>
+  <td>Revoke this token in your Slack App settings and issue a new one via a secrets manager or environment variable.</td>
+</tr>
+    </tbody>
+  </table>
+  <script>
+    var PDF_BASE64 = "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";
+    function downloadPdf() {
+      var binary = atob(PDF_BASE64);
+      var bytes = new Uint8Array(binary.length);
+      for (var i = 0; i < binary.length; i++) { bytes[i] = binary.charCodeAt(i); }
+      var url = URL.createObjectURL(new Blob([bytes], { type: "application/pdf" }));
+      var link = document.createElement("a");
+      link.href = url;
+      link.download = "credhunter-Report-" + new Date().toISOString().slice(0, 10) + ".pdf";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+    }
+  </script>
+</body>
+</html>
