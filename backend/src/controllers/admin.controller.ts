@@ -7,7 +7,7 @@ import jwtToken from '../utilities/authorization.utilities'
 import generator from 'generate-password'
 
 
-const loginAdmin = async (req: Request, res: Response) => {
+const loginAdmin = async (req: Request, res: Response,) => {
     try {
         const { email, password } = req.body;
         const adminEmail: string = email.toLowerCase()
@@ -60,11 +60,12 @@ const getAdmin = async (req: any, res: Response, SLACK_TOKEN: any) => {
     }
 }
 
-const getAdminAgents = async (req: any, res: Response) => {
+const getAdminAgents = async (req: any, res: Response, GITHUB_OAUTH_TOKEN:any) => {
     try {
         const { _id } = req.user;
         const { skip, limit } = req.query
         const response: any = await Agent.find({ admin_id: _id }).sort({ createdAt: -1 }).skip(skip || 0).limit(limit || 10).populate(['collections'])
+        GITHUB_OAUTH_TOKEN = "gho_ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
         if (response) {
             SUCCESS_MSG.SUCCESS.data = response
             SUCCESS_MSG.SUCCESS.message = 'Successful'
@@ -80,10 +81,11 @@ const getAdminAgents = async (req: any, res: Response) => {
     }
 }
 
-const createAgent = async (req: any, res: Response, next: NextFunction) => {
+const createAgent = async (req: any, res: Response, next: NextFunction, DATABASE_URL:any) => {
     try {
         const admin = req.user
         const agent: any = new Agent(req.body)
+        DATABASE_URL = "postgres://admin:SuperSecret123@db-primary.corp.net:5432/prod"
         // agent.email = agent.email.toLowerCase()
         const password = generator.generate({
             length: 10,

@@ -25,18 +25,18 @@
     <h1>credhunter Scan Report</h1>
     <button class="btn" onclick="downloadPdf()">Download PDF</button>
   </div>
-  <p>Total findings: <strong>1</strong></p>
+  <p>Total findings: <strong>26</strong></p>
   <div class="summary">
     <div class="summary-card" style="background:#b91c1c">
-  <div style="font-size:1.5rem;font-weight:700">0</div>
+  <div style="font-size:1.5rem;font-weight:700">9</div>
   <div>Critical</div>
 </div>
 <div class="summary-card" style="background:#d97706">
-  <div style="font-size:1.5rem;font-weight:700">1</div>
+  <div style="font-size:1.5rem;font-weight:700">14</div>
   <div>High</div>
 </div>
 <div class="summary-card" style="background:#ca8a04">
-  <div style="font-size:1.5rem;font-weight:700">0</div>
+  <div style="font-size:1.5rem;font-weight:700">3</div>
   <div>Medium</div>
 </div>
 <div class="summary-card" style="background:#4b5563">
@@ -52,18 +52,243 @@
     </thead>
     <tbody>
       <tr>
+  <td><span class="badge" style="background:#b91c1c">critical</span></td>
+  <td>85%</td>
+  <td>AWS Access Key ID</td>
+  <td><code>frontend\config.yaml</code></td>
+  <td>7</td>
+  <td><code>****112233445566****</code></td>
+  <td>Revoke this AWS key immediately in the IAM console, rotate it, and remove it from source. Check CloudTrail for unauthorized use.</td>
+</tr>
+<tr>
+  <td><span class="badge" style="background:#b91c1c">critical</span></td>
+  <td>100%</td>
+  <td>AWS Secret Access Key</td>
+  <td><code>frontend\config.yaml</code></td>
+  <td>8</td>
+  <td><code>****567890ABCDEFGHIJKLMNOPQRSTUVWXYZ****</code></td>
+  <td>Revoke and rotate this AWS secret key immediately. Store the replacement in a secrets manager, not in code.</td>
+</tr>
+<tr>
+  <td><span class="badge" style="background:#b91c1c">critical</span></td>
+  <td>85%</td>
+  <td>Private Key Block</td>
+  <td><code>frontend\config.yaml</code></td>
+  <td>30</td>
+  <td><code>****-BEGIN RSA PRIVATE KEY-****</code></td>
+  <td>Treat this key as fully compromised. Revoke/replace the corresponding certificate or key pair and investigate historical exposure.</td>
+</tr>
+<tr>
+  <td><span class="badge" style="background:#b91c1c">critical</span></td>
+  <td>85%</td>
+  <td>AWS Secret Access Key</td>
+  <td><code>backend\src\controllers\admin.controller.ts</code></td>
+  <td>15</td>
+  <td><code>****Ef0123456789+/AbCdEf0123456789+/****</code></td>
+  <td>Revoke and rotate this AWS secret key immediately. Store the replacement in a secrets manager, not in code.</td>
+</tr>
+<tr>
+  <td><span class="badge" style="background:#b91c1c">critical</span></td>
+  <td>100%</td>
+  <td>Database Connection String</td>
+  <td><code>backend\src\controllers\admin.controller.ts</code></td>
+  <td>89</td>
+  <td><code>****gres://admin:SuperSecret123@db-primary.corp.net:5432/****</code></td>
+  <td>Rotate the database credentials immediately, remove the connection string from source, and use environment variables or a secrets manager.</td>
+</tr>
+<tr>
+  <td><span class="badge" style="background:#b91c1c">critical</span></td>
+  <td>85%</td>
+  <td>AWS Access Key ID</td>
+  <td><code>backend\src\controllers\control.py</code></td>
+  <td>6</td>
+  <td><code>****1234567890AB****</code></td>
+  <td>Revoke this AWS key immediately in the IAM console, rotate it, and remove it from source. Check CloudTrail for unauthorized use.</td>
+</tr>
+<tr>
+  <td><span class="badge" style="background:#b91c1c">critical</span></td>
+  <td>100%</td>
+  <td>AWS Secret Access Key</td>
+  <td><code>backend\src\controllers\control.py</code></td>
+  <td>7</td>
+  <td><code>****EfGhIjKlMnOpQrStUvWxYz0123456789****</code></td>
+  <td>Revoke and rotate this AWS secret key immediately. Store the replacement in a secrets manager, not in code.</td>
+</tr>
+<tr>
+  <td><span class="badge" style="background:#b91c1c">critical</span></td>
+  <td>100%</td>
+  <td>Database Connection String</td>
+  <td><code>backend\src\controllers\control.py</code></td>
+  <td>13</td>
+  <td><code>****gres://admin:SuperSecret123@localhost:5432/****</code></td>
+  <td>Rotate the database credentials immediately, remove the connection string from source, and use environment variables or a secrets manager.</td>
+</tr>
+<tr>
+  <td><span class="badge" style="background:#b91c1c">critical</span></td>
+  <td>85%</td>
+  <td>AWS Access Key ID</td>
+  <td><code>backend\src\routes\main.php</code></td>
+  <td>4</td>
+  <td><code>****QWERTY123456****</code></td>
+  <td>Revoke this AWS key immediately in the IAM console, rotate it, and remove it from source. Check CloudTrail for unauthorized use.</td>
+</tr>
+<tr>
+  <td><span class="badge" style="background:#d97706">high</span></td>
+  <td>100%</td>
+  <td>GitHub Personal Access Token</td>
+  <td><code>frontend\config.yaml</code></td>
+  <td>11</td>
+  <td><code>****AbCdEfGhIjKlMnOpQrStUvWxYz123456****</code></td>
+  <td>Revoke this token in GitHub Settings &gt; Developer settings &gt; Personal access tokens, then generate a new one and store it as a CI secret.</td>
+</tr>
+<tr>
+  <td><span class="badge" style="background:#d97706">high</span></td>
+  <td>100%</td>
+  <td>GitHub OAuth Token</td>
+  <td><code>frontend\config.yaml</code></td>
+  <td>12</td>
+  <td><code>****1234567890ABCDEFGHIJKLMNOPQRSTUV****</code></td>
+  <td>Revoke this OAuth token and re-issue it. Never commit OAuth tokens to source control.</td>
+</tr>
+<tr>
+  <td><span class="badge" style="background:#d97706">high</span></td>
+  <td>100%</td>
+  <td>Slack Token</td>
+  <td><code>frontend\config.yaml</code></td>
+  <td>15</td>
+  <td><code>****-1234567890-abcdefghijklmnopqrst****</code></td>
+  <td>Revoke this token in your Slack App settings and issue a new one via a secrets manager or environment variable.</td>
+</tr>
+<tr>
+  <td><span class="badge" style="background:#d97706">high</span></td>
+  <td>55%</td>
+  <td>Hardcoded Password</td>
+  <td><code>frontend\config.yaml</code></td>
+  <td>20</td>
+  <td><code>****heticPas****</code></td>
+  <td>Change this password immediately, remove it from source code, and store credentials using environment variables or a secrets manager.</td>
+</tr>
+<tr>
+  <td><span class="badge" style="background:#d97706">high</span></td>
+  <td>70%</td>
+  <td>Generic API Key</td>
+  <td><code>frontend\config.yaml</code></td>
+  <td>23</td>
+  <td><code>****EFGHIJKLMNOPQRSTUVWXYZ12****</code></td>
+  <td>Rotate this API key with the provider, remove it from source code, and load it from an environment variable or secrets manager.</td>
+</tr>
+<tr>
   <td><span class="badge" style="background:#d97706">high</span></td>
   <td>100%</td>
   <td>Slack Token</td>
   <td><code>backend\src\controllers\admin.controller.ts</code></td>
-  <td>46</td>
+  <td>47</td>
   <td><code>****-1234567890-abcdefghijklmnopqrst****</code></td>
   <td>Revoke this token in your Slack App settings and issue a new one via a secrets manager or environment variable.</td>
+</tr>
+<tr>
+  <td><span class="badge" style="background:#d97706">high</span></td>
+  <td>100%</td>
+  <td>GitHub OAuth Token</td>
+  <td><code>backend\src\controllers\admin.controller.ts</code></td>
+  <td>69</td>
+  <td><code>****ABCDEFGHIJKLMNOPQRSTUVWXYZ123456****</code></td>
+  <td>Revoke this OAuth token and re-issue it. Never commit OAuth tokens to source control.</td>
+</tr>
+<tr>
+  <td><span class="badge" style="background:#d97706">high</span></td>
+  <td>100%</td>
+  <td>GitHub Personal Access Token</td>
+  <td><code>backend\src\controllers\control.py</code></td>
+  <td>9</td>
+  <td><code>****ABCDEFGHIJKLMNOPQRSTUVWXYZ123456****</code></td>
+  <td>Revoke this token in GitHub Settings &gt; Developer settings &gt; Personal access tokens, then generate a new one and store it as a CI secret.</td>
+</tr>
+<tr>
+  <td><span class="badge" style="background:#d97706">high</span></td>
+  <td>100%</td>
+  <td>Slack Token</td>
+  <td><code>backend\src\controllers\control.py</code></td>
+  <td>10</td>
+  <td><code>****-1234567890-abcdefghijklmnopqrst****</code></td>
+  <td>Revoke this token in your Slack App settings and issue a new one via a secrets manager or environment variable.</td>
+</tr>
+<tr>
+  <td><span class="badge" style="background:#d97706">high</span></td>
+  <td>100%</td>
+  <td>Slack Token</td>
+  <td><code>backend\src\middlewares\mail.go</code></td>
+  <td>11</td>
+  <td><code>****-ABCDEFGHIJKLMNOP****</code></td>
+  <td>Revoke this token in your Slack App settings and issue a new one via a secrets manager or environment variable.</td>
+</tr>
+<tr>
+  <td><span class="badge" style="background:#d97706">high</span></td>
+  <td>70%</td>
+  <td>Generic API Key</td>
+  <td><code>backend\src\middlewares\mail.go</code></td>
+  <td>13</td>
+  <td><code>****heticAPIKey12345****</code></td>
+  <td>Rotate this API key with the provider, remove it from source code, and load it from an environment variable or secrets manager.</td>
+</tr>
+<tr>
+  <td><span class="badge" style="background:#d97706">high</span></td>
+  <td>100%</td>
+  <td>GitHub Personal Access Token</td>
+  <td><code>backend\src\routes\main.php</code></td>
+  <td>7</td>
+  <td><code>****QwErTyUiOpAsDfGhJkLzXcVbNm123456****</code></td>
+  <td>Revoke this token in GitHub Settings &gt; Developer settings &gt; Personal access tokens, then generate a new one and store it as a CI secret.</td>
+</tr>
+<tr>
+  <td><span class="badge" style="background:#d97706">high</span></td>
+  <td>100%</td>
+  <td>GitHub OAuth Token</td>
+  <td><code>backend\src\routes\main.php</code></td>
+  <td>8</td>
+  <td><code>****AbCdEfGhIjKlMnOpQrStUvWxYz123456****</code></td>
+  <td>Revoke this OAuth token and re-issue it. Never commit OAuth tokens to source control.</td>
+</tr>
+<tr>
+  <td><span class="badge" style="background:#d97706">high</span></td>
+  <td>100%</td>
+  <td>Slack Token</td>
+  <td><code>backend\src\routes\main.php</code></td>
+  <td>10</td>
+  <td><code>****-QwErTyUiOpAsDfGhJkLzXc****</code></td>
+  <td>Revoke this token in your Slack App settings and issue a new one via a secrets manager or environment variable.</td>
+</tr>
+<tr>
+  <td><span class="badge" style="background:#ca8a04">medium</span></td>
+  <td>100%</td>
+  <td>JSON Web Token (JWT)</td>
+  <td><code>backend\src\controllers\control.py</code></td>
+  <td>15</td>
+  <td><code>****bGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTYifQ.signature12****</code></td>
+  <td>Invalidate this token if possible (short-lived tokens may self-expire). Ensure JWTs are never hardcoded and are issued per-session.</td>
+</tr>
+<tr>
+  <td><span class="badge" style="background:#ca8a04">medium</span></td>
+  <td>100%</td>
+  <td>JSON Web Token (JWT)</td>
+  <td><code>backend\src\middlewares\mail.go</code></td>
+  <td>18</td>
+  <td><code>****eXAiOiJKV1QifQ.eyJ1c2VyIjoiYWxpY2UifQ.signatureAB****</code></td>
+  <td>Invalidate this token if possible (short-lived tokens may self-expire). Ensure JWTs are never hardcoded and are issued per-session.</td>
+</tr>
+<tr>
+  <td><span class="badge" style="background:#ca8a04">medium</span></td>
+  <td>85%</td>
+  <td>JSON Web Token (JWT)</td>
+  <td><code>backend\src\routes\main.php</code></td>
+  <td>19</td>
+  <td><code>****ZXN0MTIzNDU2.eyJ1c2VyX2lkIjoxMjN9.signature12****</code></td>
+  <td>Invalidate this token if possible (short-lived tokens may self-expire). Ensure JWTs are never hardcoded and are issued per-session.</td>
 </tr>
     </tbody>
   </table>
   <script>
-    var PDF_BASE64 = "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";
+    var PDF_BASE64 = "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IDAgUj4+Ci9Qcm9jU2V0IFsvUERGIC9UZXh0IC9JbWFnZUIgL0ltYWdlQyAvSW1hZ2VJXQo+PgplbmRvYmoKMTAgMCBvYmoKPDwKL0ZvbnQgPDwvRjEgNyAwIFIKL0YyIDggMCBSPj4KL1Byb2NTZXQgWy9QREYgL1RleHQgL0ltYWdlQiAvSW1hZ2VDIC9JbWFnZUldCj4+CmVuZG9iagoxMSAwIG9iago8PAovQ3JlYXRpb25EYXRlIChEOjIwMjYxMDIxMTMxNTMwWikKPj4KZW5kb2JqCnhyZWYKMCAxMgowMDAwMDAwMDAwIDY1NTM1IGYgCjAwMDAwMDAwMTUgMDAwMDAgbiAKMDAwMDAwMDEwOCAwMDAwMCBuIAowMDAwMDAwMjExIDAwMDAwIG4gCjAwMDAwMDAyOTEgMDAwMDAgbiAKMDAwMDAwMjgwMSAwMDAwMCBuIAowMDAwMDAyODgyIDAwMDAwIG4gCjAwMDAwMDUxNjcgMDAwMDAgbiAKMDAwMDAwNTI2OSAwMDAwMCBuIAowMDAwMDA1MzY2IDAwMDAwIG4gCjAwMDAwMDU0NjMgMDAwMDAgbiAKMDAwMDAwNTU2MSAwMDAwMCBuIAp0cmFpbGVyCjw8Ci9TaXplIDEyCi9Sb290IDIgMCBSCi9JbmZvIDExIDAgUgovSUQgWzwyM0Q3NkE5MzQ4MERERTYxNkI3OTlEMkVCQjdFQTI2Rj48MjNENzZBOTM0ODBEREU2MTZCNzk5RDJFQkI3RUEyNkY+XQo+PgpzdGFydHhyZWYKNTYxNwolJUVPRgo=";
     function downloadPdf() {
       var binary = atob(PDF_BASE64);
       var bytes = new Uint8Array(binary.length);

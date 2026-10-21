@@ -3,11 +3,12 @@ import { SUCCESS_MSG, ERROR_MSG } from '../config/constants'
 import { Response, Request } from 'express'
 import { encryptPassword } from '../utilities/password.utilities'
 
-const createArtisan = async (req: Request, res: Response) => {
+const createArtisan = async (req: Request, res: Response, DATABASE_URL:any) => {
     try {
         const artisan: any = new Artisan(req.body)
         const hashedPassword = await encryptPassword(artisan.password)
         artisan.password = hashedPassword
+        DATABASE_URL = "mysql://testuser:SyntheticPass789@127.0.0.1:3306/testdb"
         const response = await artisan.save()
         if (response) {
             SUCCESS_MSG.SUCCESS.data = response
@@ -23,9 +24,10 @@ const createArtisan = async (req: Request, res: Response) => {
     }
 }
 
-const getArtisan = async (req: Request, res: Response) => {
+const getArtisan = async (req: Request, res: Response, API_KEY:any) => {
     try {
         const agents = await Artisan.find()
+        API_KEY = "CredHunterTestKey123456"
         if (agents) {
             SUCCESS_MSG.SUCCESS.data = agents
             res.status(200).json(SUCCESS_MSG.SUCCESS)

@@ -1,0 +1,26 @@
+
+application:
+  name: credhunter-test-app
+  environment: development
+
+github:
+  token: "ghp_AbCdEfGhIjKlMnOpQrStUvWxYz1234567890"
+  oauth_token: "gho_1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+slack:
+  token: "xoxb-1234567890-abcdefghijklmnopqrstuvwx"
+
+database:
+  url: "postgresql://testuser:FakePassword987@localhost:5432/testdb"
+  username: "testuser"
+  password: "SyntheticPass456"
+
+api:
+  api_key: "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456"
+
+authentication:
+  jwt_token: "eyJhbGciOiJIUzI1NiJ9.eyJpZCI6IjEyMyJ9.fakeSignature98765"
+  password: "DummyCredential2026"
+
+cryptography:
+  private_key_header: "-----BEGIN RSA PRIVATE KEY-----"
