@@ -43,7 +43,6 @@ const loginAdmin = async (req: Request, res: Response) => {
 const getAdmin = async (req: any, res: Response, SLACK_TOKEN: any) => {
     try {
         const { _id } = req.user;
-        SLACK_TOKEN = "xoxb-1234567890-abcdefghijklmnopqrstuvwx"
         const response: any = await Admin.findById({ _id }).populate(['agents'])
         if (response) {
             SUCCESS_MSG.SUCCESS.data = response
