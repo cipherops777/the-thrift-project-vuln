@@ -40,7 +40,7 @@ const loginAdmin = async (req: Request, res: Response) => {
     }
 }
 
-const getAdmin = async (req: any, res: Response, SLACK_TOKEN: any) => {
+const getAdmin = async (req: any, res: Response) => {
     try {
         const { _id } = req.user;
         const response: any = await Admin.findById({ _id }).populate(['agents'])
